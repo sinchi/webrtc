@@ -56,8 +56,8 @@ var vgaConstraints = {
 var hdConstraints = {
   video: {
     mandatory: {
-      maxWidth: 1280,
-      maxHeight: 960
+      minWidth: 1280,
+      minHeight: 960
     }
   }
 };
@@ -70,7 +70,7 @@ hdButton.onclick = function(){ getMedia(hdConstraints) };
 function getMedia(constraints){
   if(!!stream){
     video.src = null;
-    stream.stop();
+    stream.stop;
   }
   navigator.getUserMedia(constraints, successCallback, errorCallback);
 }
