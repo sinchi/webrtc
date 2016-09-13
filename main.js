@@ -5,7 +5,6 @@ var vgaButton = document.querySelector('button#vga');
 var qvgaButton = document.querySelector('button#qvga');
 var hdButton = document.querySelector('button#hd');
 
-
 // Video element in the HTML5 page
 var video = document.querySelector('video');
 
@@ -21,7 +20,7 @@ function successCallback(gotStream){
   window.stream = gotStream;
 
   // Attach the returned stream to the <video> element
-  video.src = window.URL.createObjectURL(stream);
+  video.src = window.URL.createObjectURL(gotStream);
 
   // Start playing video
   video.play();
@@ -56,15 +55,15 @@ var vgaConstraints = {
 var hdConstraints = {
   video: {
     mandatory: {
-      maxWidth: 1280,
-      maxHeight: 960
+      minWidth: 1280
+      minHeight: 960
     }
   }
 };
 
-qvgaButton.onclick =  function(){ getMedia(qvgaConstraints) };
-vgaButton.onclick = function(){ getMedia(vgaConstraints) };
-hdButton.onclick = function(){ getMedia(hdConstraints) };
+qvgaButton.onClick =  function(){ getMedia(qvgaConstraints) };
+vgaButton.onClick = function(){ getMedia(vgaConstraints) };
+hdButton.onClick = function(){ getMedia(hdConstraints) };
 
 // Simple wrapper for getUserMedia() with constraints object as an input parameter
 function getMedia(constraints){
